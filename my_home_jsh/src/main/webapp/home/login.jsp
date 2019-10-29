@@ -1,133 +1,82 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" 
+	prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags"
+	prefix="spring" %>	    
+<%@ taglib uri="http://www.springframework.org/tags/form"
+	prefix="form" %>	
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="css/my.css">
-<title>login.jsp</title>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
 </head>
 <body>
-<!-- <form action="sessionLogin.jsp" method="post"> -->
-<!-- ID : <br/><input type="text" name="ID" size="20" placeholder="ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì‹œì˜¤"/><br/> -->
-<!-- PW : <br/><input type="password" name="PWD" size="20" placeholder="íŒ¨ìŠ¤ì›Œë“œë¥¼ ì…ë ¥í•˜ì‹œì˜¤" /><br/> -->
-<!-- <input type="submit" value="Login" /> -->
-<!-- </form> -->
-
-	<script type="text/javascript">
-		function getRandomPassword(){
-			window.open(
-					'./lesson09/randomPassword.jsp',
-					'rand',
-					'width=500,height=300'
-				);
-		} 
-	</script>
-	<script type="text/javascript">
-		function loginCheck() {
-			var frm = document.loginFrm;
-			if(frm.ID.value == ''){
-				alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
-				frm.ID.focus();
-				return false;
-			}
-			if(frm.PWD.value == ''){
-				alert("íŒ¨ìŠ¤ì›Œë“œë¥¼ ì…ë ¥í•˜ì„¸ìš”");
-				frm.PWD.focus();
-				return false;
-			}
-		}
-	</script>
-
+<script type="text/javascript">
+function check(){
+	var frm = document.loginFrm;
+	if(frm.ID.value == ''){
+		alert("ID¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		frm.ID.focus();
+		return false;
+	}
+	if(frm.PWD.value == ''){
+		alert("¾ÏÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		frm.PWD.focus();
+		return false;
+	}
+}
+</script>
+<div align="right"><a href="../home/userentry.html">
+È¸¿ø°¡ÀÔ</a></div>
 <c:if test="${param.MSG1 == 'Y' }">
-	ê²Œì‹œê¸€ì„ ë“±ë¡í•˜ë ¤ë©´, ë¡œê·¸ì¸ì„ í•´ì•¼ í•©ë‹ˆë‹¤.<br/>
-	<form name="loginFrm" action="login.do" method="post" onsubmit="return loginCheck();">
-		<table class="blueTable">
-			<thead>
-				<tr>
-					<td colspan="2">Login</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>ID</td>
-					<td><input type="text" name="ID" size="20" placeholder="ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì‹œì˜¤"/></td>
-				</tr>
-				<tr>
-					<td>PW</td>
-					<td><input type="password" name="PWD" size="20" placeholder="íŒ¨ìŠ¤ì›Œë“œë¥¼ ì…ë ¥í•˜ì‹œì˜¤" /></td>
-				</tr>
-			</tbody>
-			<tfoot>
-				<tr>
-					<td colspan="2">
-						<input type="submit" value="Login"/>
-						<input type="button" value="ì„ì‹œì•”í˜¸ë°›ê¸°" onclick="getRandomPassword();" />
-					</td>
-				</tr>
-			</tfoot>
-		</table>
-	</form>
+°Ô½Ã±ÛÀ» µî·ÏÇÏ·Á¸é, ·Î±×ÀÎ ÇØ¾ß ÇÕ´Ï´Ù.<br/>
+<form action="login.do" method="post"
+	name="loginFrm" onSubmit="return check();">
+¾ÆÀÌµğ : <input type="text" name="ID" 
+		placeholder="¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä."/><br/>
+ÆĞ½º¿öµå : <input type="password" name="PWD"
+		placeholder="¾ÏÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä."/><br/>
+<input type="submit" value="·Î±×ÀÎ"/>
+</form>
+
 </c:if>
 <c:if test="${param.RESULT == 'nologin' }">
-	êµ¬ë§¤í•˜ì‹œë ¤ë©´ ë¡œê·¸ì¸ í•´ì•¼ í•©ë‹ˆë‹¤<br/>
-	<form name="loginFrm" action="CartLogin.do" method="post" onsubmit="return loginCheck();">
-		<table class="blueTable">
-			<thead>
-				<tr>
-					<td colspan="2">Login</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>ID</td>
-					<td><input type="text" name="ID" size="20" placeholder="ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì‹œì˜¤"/></td>
-				</tr>
-				<tr>
-					<td>PW</td>
-					<td><input type="password" name="PWD" size="20" placeholder="íŒ¨ìŠ¤ì›Œë“œë¥¼ ì…ë ¥í•˜ì‹œì˜¤" /></td>
-				</tr>
-			</tbody>
-			<tfoot>
-				<tr>
-					<td colspan="2">
-						<input type="submit" value="Login"/>
-						<input type="button" value="ì„ì‹œì•”í˜¸ë°›ê¸°" onclick="getRandomPassword();" />
-					</td>
-				</tr>
-			</tfoot>
-		</table>
-	</form>
+±¸¸ÅÇÏ½Ã·Á¸é, ·Î±×ÀÎ ÇØ¾ß ÇÕ´Ï´Ù.<br/>
+<form action="cartLogin.do" method="post"
+	name="loginFrm" onSubmit="return check();">
+¾ÆÀÌµğ : <input type="text" name="ID" 
+		placeholder="¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä."/><br/>
+ÆĞ½º¿öµå : <input type="password" name="PWD"
+		placeholder="¾ÏÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä."/><br/>
+<input type="submit" value="·Î±×ÀÎ"/>
+</form>
 </c:if>
 <c:if test="${param.RESULT == null }">
-	<form name="loginFrm" action="login.do" method="post" onsubmit="return loginCheck();">
-		<table class="blueTable">
-			<thead>
-				<tr>
-					<td colspan="2">Login</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>ID</td>
-					<td><input type="text" name="ID" size="20" placeholder="ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì‹œì˜¤"/></td>
-				</tr>
-				<tr>
-					<td>PW</td>
-					<td><input type="password" name="PWD" size="20" placeholder="íŒ¨ìŠ¤ì›Œë“œë¥¼ ì…ë ¥í•˜ì‹œì˜¤" /></td>
-				</tr>
-			</tbody>
-			<tfoot>
-				<tr>
-					<td colspan="2">
-						<input type="submit" value="Login"/>
-						<input type="button" value="ì„ì‹œì•”í˜¸ë°›ê¸°" onclick="getRandomPassword();" />
-					</td>
-				</tr>
-			</tfoot>
-		</table>
-	</form>
+<form:form modelAttribute="user" 
+	action="../login/frame.html"	method="post">
+¾ÆÀÌµğ : <form:input path="user_id" size="12" 
+		placeholder="¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä."/>
+	<font color="red"><form:errors path="user_id"/>
+	</font><br/>
+ÆĞ½º¿öµå : <form:password path="password" size="12"
+		placeholder="¾ÏÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä."/>
+	<font color="red"><form:errors path="password"/>
+	</font><br/>
+<input type="submit" value="·Î±×ÀÎ"/>
+</form:form>
 </c:if>
+<input type="button" value="ÀÓ½Ã ¾ÏÈ£ ¹Ş±â"/>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+

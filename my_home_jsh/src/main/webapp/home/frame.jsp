@@ -1,94 +1,96 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" 
+			prefix="c" %>    
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="css/my.css">
-<script type="text/javascript" src="js/clock.js"></script>
-<meta charset="UTF-8">
-<title>JSP Study</title>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+function workingClock(){
+	var days=["ÀÏ","¿ù","È­","¼ö","¸ñ","±İ","Åä"];
+	var today = new Date();
+	var year = today.getFullYear();
+	var month = today.getMonth() + 1;
+	if(month < 10) month = "0"+month;
+	var date = today.getDate();
+	if(date < 10) date = "0"+date;
+	var index = today.getDay();
+	var day = days[index];
+	var hour = today.getHours();
+	var min = today.getMinutes();
+	if(min < 10) min = "0"+min;
+	var sec = today.getSeconds();
+	if(sec < 10) sec = "0"+sec;
+	var str=year+"-"+month+"-"+date+" "+day+" "+hour+
+		":"+min+":"+sec;
+	document.getElementById("clock").innerHTML=str;
+}
+function startClock(){
+	setInterval(workingClock, 1000);
+}
+</script>
 </head>
 <body onload="startClock()">
-<table class="blueTable">
-	<thead>
-		<tr>
-			<td style="width: 100%; height: 50px; color: black; background: white;" >
-				
-				Let`s study JSP! <div id="clock"></div>
-				
-			</td>
-		</tr>
-		<tr>
-			<td style="color: black;"> Welcome ~~ </td>
-		</tr>
-	</thead>
+<table align="center" 
+	style="width:100%; background-color:orange;">
+<tr><td><h2 align="center">JSP¸¦ °øºÎÇÕ´Ï´Ù.</h2></td></tr>
 </table>
-<table class="blueTable">
-	<tr>
-		<td style="vertical-align: top; width: 100px;">
-			<c:choose>
-				<c:when test="${sessionScope.LOGIN_ID == null}">
-					<jsp:include page="login.jsp" />	
-				</c:when>
-				<c:otherwise>
-					<jsp:include page="logout.jsp" />
-				</c:otherwise>
-			</c:choose>
-			
-			<a href="ViewNoticeList.do">[ê³µì§€ì‚¬í•­ ë³´ê¸°]</a><br/>
-			<a href="frame.jsp?BODY=noticeWrite.jsp">[ê³µì§€ì‚¬í•­ ì“°ê¸°]</a><br/>
-			<a href="ViewArticleList.do">ê²Œì‹œê¸€ ë³´ê¸°</a><br/>
-			<a href="frame.jsp?BODY=bbsWrite.jsp">ê²Œì‹œê¸€ ì‘ì„±</a><br/>
-			===êµ¬ë¶„ì„ ===<br/>
-			<a href="frame.jsp?BODY=userentry.jsp">ê°€ì…í•˜ê¸°</a><br/>
-			<a href="frame.jsp?BODY=itemInput.jsp">ìƒí’ˆì •ë³´ ë“±ë¡</a><br/>
-<!-- 			<a href="frame.jsp?BODY=itemList.jsp">ìƒí’ˆì •ë³´ ë³´ê¸°</a><br/> -->
-			<a href="ItemList.do">ìƒí’ˆì •ë³´ ë³´ê¸°</a><br/>
-			<a href="CartList.do">ì¥ë°”êµ¬ë‹ˆ ë³´ê¸°</a><br/>
-			<a href="WriteForm.do">ì´ë¯¸ì§€ ê²Œì‹œíŒ(ì‘ì„±)</a><br/>
-			<a href="ImageList.do">ì´ë¯¸ì§€ ê²Œì‹œíŒ(ëª©ë¡)</a><br/>
-			
-			===êµ¬ë¶„ì„ ===<br/>
-			<a href="js/javascript.html">JavaScript</a><br/>
-<!-- 			<a href="frame.jsp?BODY=intro.jsp">ìê¸°ì†Œê°œ</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=wordCount.jsp">ë‹¨ì–´ìˆ˜ ì„¸ê¸°</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=fmtDate.jsp">fmt Date ì˜ˆì œ</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=fmtNumber.jsp">fmt Number ì˜ˆì œ</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=fmtSetLocale.jsp">fmt setLocale êµ­ì œ/ì§€ì—­/ì–¸ì–´ ì˜ˆì œ</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=fmtTimeZone.jsp">fmt timeZone ì˜ˆì œ</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=fmtTimeZone2.jsp">TimeZone</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=fmtBundle.jsp?">properties(ko/en/ja)</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=function.jsp">JSTL(function)</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=jstl_3rdparty.jsp">JSTL(3rd party)</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=jstl_custom.jsp">JSTL(Custom)</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=jstl_custom2.jsp">JSTL(Custom)</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=actionTag.jsp">Action tag</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=actionTag2.jsp">Action tag2</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=actionTagCalc.jsp">Action tag(scriptless)</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=actionTagGooGooDan.jsp">Action tag(GooGooDan)</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=simpleTagClass.jsp">SimpleTag</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=gugudanTag.jsp">GuGuDanTag</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=exampleTag.jsp">exampleTag(scriptless)</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=replaceTag.jsp">replaceTag(StringWriter)</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=translateTag.jsp">translateTag</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=maxTag.jsp">MaxTag</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=ListRowTag.jsp">ListRowTag(íƒœê·¸ ì•ˆì— íƒœê·¸)</a><br/> -->
-<!-- 			<a href="frame.jsp?BODY=ListRowTag2.jsp">ListRowTag2(ë„ì „ê³¼ì œ)</a><br/> -->
-		</td>
-		<td style="width: 800px; height:400px; border-style: solid;">
-			<c:choose>
-				<c:when test="${param.BODY != null }">
-					<jsp:include page="${param.BODY }" />
-				</c:when>
-				<c:otherwise>
-					BODY ê°€ ì—†ë‹¤
-				</c:otherwise>
-			</c:choose>
-		</td>
-	</tr>
+<table style=
+	"border:1px solid blue; vertical-align:top;">
+<tr><td style="width:190px; height:300px; 
+	border:1px solid blue; vertical-align:top;">
+	<fieldset>
+	<c:choose>
+		<c:when test="${sessionScope.loginUser != null }">
+			<jsp:include page="logout.jsp"/>
+		</c:when>
+		<c:when test="${HEADER != null}">
+			<jsp:include page="${HEADER }"/>
+		</c:when>
+		<c:otherwise>
+			<jsp:include page="../login/login.html"/>
+		</c:otherwise>
+	</c:choose>
+	</fieldset>
+<a href="../home/intro.html?BODY=intro.jsp">ÀÚ±â¼Ò°³</a><br/>
+<a href="">°øÁö»çÇ× ¾²±â</a><br/>
+<a href="">°øÁö»çÇ× º¸±â</a><br/>
+<a href="../home/bbsTemplate.html">°Ô½Ã±Û ¾²±â</a><br/>
+<a href="../read/read.html">°Ô½Ã±Û º¸±â</a><br/>
+<a href="">»óÇ°Á¤º¸ µî·Ï</a><br/>
+<a href="">»óÇ°Á¤º¸ º¸±â</a><br/>
+<a href="">Àå¹Ù±¸´Ï º¸±â</a><br/>
+<a href="">ÀÌ¹ÌÁö °Ô½ÃÆÇ ÀÛ¼º</a><br/>
+<a href="">ÀÌ¹ÌÁö °Ô½ÃÆÇ ¸ñ·Ï</a>
+</td>
+	<td style="width:650px;border:1px solid blue;">
+	<c:choose>
+		<c:when test="${BODY != null }">
+			<jsp:include page="${BODY }"/>
+		</c:when>
+		<c:otherwise>
+		BODY°¡ ¾ø´Ù.
+		</c:otherwise>	
+	</c:choose>
+	</td>
+</tr>
 </table>
-<div align="center" style="font-size:20px;">
-${ initParam.ManagerName } / ${ initParam["ManagerEmail"] }
-</div>
+<div id="clock"></div>
+<div align="center" style="font-size:20px;background-color:green;">
+2019. Copyright. Å¸ÀÌ°Å</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

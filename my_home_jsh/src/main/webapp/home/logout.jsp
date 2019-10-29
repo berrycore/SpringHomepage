@@ -1,20 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>logout.jsp</title>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
 </head>
 <body>
-<!-- <form action="sessionLogout.jsp"> -->
-<%-- Greeting! ${sessionScope.LOGIN_ID } <br/> --%>
-<!-- <input type="submit" value="Logout" /><br/> -->
-<!-- </form> -->
-
-<form action="logout.do">
-Greeting! ${sessionScope.LOGIN_ID } <br/>
-<input type="submit" value="Logout" /><br/>
+<form action="../logout/frame.html">
+æ»≥Á«œººø‰? ${sessionScope.loginUser }¥‘~<br/>
+<input type="submit" value="∑Œ±◊ æ∆øÙ"/>
 </form>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
