@@ -16,6 +16,16 @@ import model.Condition;
 public class ReadController {
 	@Autowired
 	private WriteCatalog writeCatalog;
+	
+	@RequestMapping(value="/read/readDetail.html", method=RequestMethod.GET)
+	public ModelAndView detail(Integer SEQNO) {
+		ModelAndView mav=new ModelAndView("home/frame");
+		Bbs bbs=writeCatalog.getBbsDetail(SEQNO);
+		mav.addObject("BBS_ITEM",bbs);
+		mav.addObject("BODY","bbsReadView.jsp");
+		return mav;
+	}
+	
 	@RequestMapping(value="/read/read.html",
 			method=RequestMethod.GET)
 	public ModelAndView readBbs(Integer pageNo) {
