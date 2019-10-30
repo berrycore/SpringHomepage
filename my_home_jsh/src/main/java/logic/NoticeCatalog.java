@@ -6,10 +6,11 @@ import model.Condition;
 import model.Notice;
 
 public interface NoticeCatalog {
-	Integer getMaxNoticeId();
-	void putNotice(Notice notice);
 	
 	List<Notice> readNotice(Condition c);
 	Integer getNoticeCount();
 	Notice getNoticeDetail(Integer id);
+	
+	Integer getMaxIdNotice();
+	void insertNotice(Notice notice);
 }

@@ -22,13 +22,22 @@
 			</tr>
 		</thead>
 		<tbody>
-			
-				
-			
+			<c:forEach items="${NOTICE_LIST }" var="cnt">
+				<tr>
+					<td>${cnt.notice_seqno }</td>
+					<td><a href="../read/readNoticeDetail.html?SEQNO=${cnt.notice_seqno}">${cnt.notice_title }</a></td>
+					<td>${cnt.notice_writer }</td>
+					<td>${cnt.notice_regist_date }</td>
+				</tr>
+			</c:forEach>
 		</tbody>
 		<tfoot>
 			<tr>
-				
+				<td colspan="4">
+					<c:forEach var="page" begin="1" end="${COUNT}">
+						<a href="../read/readNotice.html?pageNo=${page }">${page }</a>
+					</c:forEach>
+				</td>
 			</tr>
 		</tfoot>
 	</table>

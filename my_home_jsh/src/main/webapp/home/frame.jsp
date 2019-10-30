@@ -59,8 +59,8 @@
 					</c:choose>
 				</fieldset> 
 				<a href="../home/intro.html?BODY=intro.jsp">자기소개</a><br />
-				<a href="">공지사항 쓰기</a><br /> 
-				<a href="../notice/read.html">공지사항 보기</a><br /> 
+				<a href="../notice/noticeTemplate.html">공지사항 쓰기</a><br /> 
+				<a href="../read/readNotice.html">공지사항 보기</a><br /> 
 				<a href="../home/bbsTemplate.html">게시글 쓰기</a><br /> 
 				<a href="../read/read.html">게시글 보기</a><br /> 
 				<a href="../product/open.html">상품정보 등록</a><br />
