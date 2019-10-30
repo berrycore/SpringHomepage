@@ -15,27 +15,13 @@ import model.User;
 public class EntryController {
 	@Autowired
 	private LoginCatalog loginCatalog;
-	@RequestMapping(value="/entry/entry.html",
-			method=RequestMethod.POST)
-	public ModelAndView entry(User user,
-			HttpSession session) {
-		loginCatalog.entryUser(user);//DB에 삽입
+
+	@RequestMapping(value = "/entry/entry.html", method = RequestMethod.POST)
+	public ModelAndView entry(User user, HttpSession session) {
+		loginCatalog.entryUser(user);// DB에 삽입
 		ModelAndView mav = new ModelAndView("home/frame");
-		session.setAttribute("loginUser", 
-				user.getUser_id());
-		mav.addObject("BODY","loginResult.jsp");
+		session.setAttribute("loginUser", user.getUser_id());
+		mav.addObject("BODY", "loginResult.jsp");
 		return mav;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-

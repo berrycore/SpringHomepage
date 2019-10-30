@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="../logout/frame.html">
-æ»≥Á«œººø‰? ${sessionScope.loginUser }¥‘~<br/>
-<input type="submit" value="∑Œ±◊ æ∆øÙ"/>
-</form>
+	<form action="../logout/frame.html">
+		æ»≥Á«œººø‰? ${sessionScope.loginUser }¥‘~<br /> <input type="submit"
+			value="∑Œ±◊ æ∆øÙ" />
+	</form>
 </body>
 </html>
 

@@ -19,14 +19,15 @@
 		<c:forEach items="${BBS_LIST }" var="cnt">
 			<tr>
 				<td>${cnt.seqno }</td>
-				<td><a href="../read/readDetail.html?SEQNO=${cnt.seqno}">${cnt.title }</a> </td>
+				<td><a href="../read/readDetail.html?SEQNO=${cnt.seqno}">${cnt.title }</a>
+				</td>
 				<td>${cnt.id }</td>
 				<td>${cnt.bbs_date }</td>
 			</tr>
 		</c:forEach>
 	</table>
 	<c:forEach var="page" begin="1" end="${COUNT}">
-		<a href="BBSReadServlet?PAGE=${page }">${page }</a>
+		<a href="../read/read.html?pageNo=${page }">${page }</a>
 	</c:forEach>
 </body>
 </html>

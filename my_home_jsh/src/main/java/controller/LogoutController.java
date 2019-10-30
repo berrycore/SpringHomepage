@@ -8,21 +8,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class LogoutController {
-	@RequestMapping(value="/logout/frame.html")
+	@RequestMapping(value = "/logout/frame.html")
 	public ModelAndView logout(HttpSession session) {
 		session.removeAttribute("loginUser");
 		ModelAndView mav = new ModelAndView("home/frame");
-		mav.addObject("BODY","logoutResult.jsp");
+		mav.addObject("BODY", "logoutResult.jsp");
 		return mav;
 	}
 }
-
-
-
-
-
-
-
-
-
-

@@ -11,25 +11,16 @@ import logic.LoginCatalog;
 public class IdcheckController {
 	@Autowired
 	private LoginCatalog loginCatalog;
-	@RequestMapping(value="/idcheck/idcheck.html")
+
+	@RequestMapping(value = "/idcheck/idcheck.html")
 	public ModelAndView idcheck(String ID) {
-		ModelAndView mav=new ModelAndView("home/idCheck");
-		Integer cnt=loginCatalog.getIdCnt(ID);
-		if(cnt > 0) mav.addObject("DUP","YES");
-		else mav.addObject("DUP","NO");
-		mav.addObject("ID",ID);
+		ModelAndView mav = new ModelAndView("home/idCheck");
+		Integer cnt = loginCatalog.getIdCnt(ID);
+		if (cnt > 0)
+			mav.addObject("DUP", "YES");
+		else
+			mav.addObject("DUP", "NO");
+		mav.addObject("ID", ID);
 		return mav;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
