@@ -27,4 +27,8 @@ public class ItemDaoImpl implements ItemDao {
 		return session.selectOne("mapper.myMapper.getItemCount");
 	}
 
+	public Item getItem(String code) {
+		return session.selectOne("mapper.myMapper.getItem", code);
+	}
+
 }

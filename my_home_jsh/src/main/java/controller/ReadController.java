@@ -27,6 +27,16 @@ public class ReadController {
 	@Autowired
 	private NoticeCatalog noticeCatalog;
 	
+	
+	@RequestMapping(value="/read/readItem.html")
+	public ModelAndView getItem(String CODE) {
+		ModelAndView mav = new ModelAndView("home/frame");
+		Item item = itemCatalog.getItem(CODE);
+		mav.addObject("ITEM", item);
+		mav.addObject("BODY","itemDetail.jsp");
+		return mav;
+	}
+	
 	@RequestMapping(value="/read/product.html")
 	public ModelAndView readItem(Integer pageNo) {
 		ModelAndView mav = new ModelAndView("home/frame");
@@ -103,6 +113,7 @@ public class ReadController {
 		mav.addObject("BODY", "bbsListView.jsp");
 		return mav;
 	}
+
 	
 	@RequestMapping(value="/read/readNotice.html", method = RequestMethod.GET)
 	public ModelAndView readNotice(Integer pageNo) {

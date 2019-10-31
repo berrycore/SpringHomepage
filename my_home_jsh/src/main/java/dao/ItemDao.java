@@ -10,4 +10,5 @@ public interface ItemDao {
 	void putItem(Item item);
 	List<Item> getItem(Condition c);
 	Integer getItemCount();
+	Item getItem(String code);
 }

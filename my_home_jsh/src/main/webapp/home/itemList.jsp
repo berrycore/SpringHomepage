@@ -21,7 +21,7 @@
 		<c:forEach var="item" items="${ITEM_LIST }">
 			<tr>
 				<td>${item.code }</td>
-				<td><a href="itemDetail?CODE=${item.code }"> ${item.name }</a></td>
+				<td><a href="../read/readItem.html?CODE=${item.code }"> ${item.name }</a></td>
 				<td><fmt:formatNumber groupingUsed="true"> ${item.price }</fmt:formatNumber></td>
 				<td>${item.origin }</td>
 				<td><a href="#"

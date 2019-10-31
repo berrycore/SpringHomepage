@@ -27,4 +27,8 @@ public class ItemCatalogImpl implements ItemCatalog {
 		return itemDao.getItemCount();
 	}
 
+	public Item getItem(String code) {
+		return itemDao.getItem(code);
+	}
+
 }

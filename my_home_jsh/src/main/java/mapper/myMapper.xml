@@ -2,6 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.myMapper">
+	<select id="getItem" resultType="model.Item">
+		select * from user_item where code=#{code}
+	</select>
+	
 	<select id="getItemCount" resultType="Integer">
 		select count(*) as cnt from user_item
 	</select>

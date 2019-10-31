@@ -10,4 +10,5 @@ public interface ItemCatalog {
 	void putItem(Item item);
 	List<Item> getItems(Condition c);
 	Integer getItemCount();
+	Item getItem(String code);
 }
