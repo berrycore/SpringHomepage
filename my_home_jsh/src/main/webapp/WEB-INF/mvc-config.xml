@@ -30,7 +30,7 @@ class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 "org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"></bean>
 
 	<context:component-scan 
-		base-package="dao,logic,controller"></context:component-scan>
+		base-package="dao,logic,controller,model"></context:component-scan>
 
     <mvc:annotation-driven />
 

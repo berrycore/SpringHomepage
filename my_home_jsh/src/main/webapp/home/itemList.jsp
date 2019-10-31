@@ -25,7 +25,7 @@
 				<td><fmt:formatNumber groupingUsed="true"> ${item.price }</fmt:formatNumber></td>
 				<td>${item.origin }</td>
 				<td><a href="#"
-					onClick="window.open('addCart?CODE=${item.code}','cart','width=400,height=250').focus()">
+					onClick="window.open('../cart/addCart.html?CODE=${item.code}','cart','width=400,height=250').focus()">
 						장바구니 담기</a></td>
 			</tr>
 		</c:forEach>
