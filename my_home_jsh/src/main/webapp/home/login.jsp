@@ -48,9 +48,8 @@
 		</form>
 	</c:if>
 	<c:if test="${param.RESULT == null }">
-		<form:form modelAttribute="guest" action="../login/frame.html" method="post">
-<%-- 		<form:form modelAttribute="user" action="../login/frame.html" --%>
-			
+		<form:form modelAttribute="guest" action="../login/frame.html"
+			method="post">
 아이디 : <form:input path="user_id" size="12" placeholder="아이디를 입력하세요." />
 			<font color="red"><form:errors path="user_id" /> </font>
 			<br />

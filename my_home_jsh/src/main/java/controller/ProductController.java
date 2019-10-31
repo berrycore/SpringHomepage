@@ -18,29 +18,29 @@ public class ProductController {
 
 	@Autowired
 	private ItemCatalog itemCatalog;
-	
-	@RequestMapping(value="/product/open.html")
+
+	@RequestMapping(value = "/product/open.html")
 	public ModelAndView open() {
 		ModelAndView mav = new ModelAndView("home/frame");
 		mav.addObject(new Item());
 		mav.addObject("BODY", "itemInput.jsp");
 		return mav;
 	}
-	
-	@RequestMapping(value="/product/entry.html")
+
+	@RequestMapping(value = "/product/entry.html")
 	public ModelAndView entry(@Valid Item item, BindingResult br, HttpSession session) {
 		ModelAndView mav = new ModelAndView("home/frame");
-		if( br.hasErrors() ) {
+		if (br.hasErrors()) {
 			mav.addObject("BODY", "itemInput.jsp");
 			return mav;
 		}
 		String id = (String) session.getAttribute("loginUser");
-		if( id == null) {
+		if (id == null) {
 			mav.addObject("BODY", "nologin.jsp");
 			mav.addObject("ITEM", "nobody");
 			mav.addObject(new User());
 			return mav;
-		}else {
+		} else {
 			itemCatalog.putItem(item);
 			return new ModelAndView("redirect:/read/product.html");
 		}

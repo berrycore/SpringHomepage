@@ -1,6 +1,7 @@
 package model;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,11 @@ import dao.CartDao;
 public class Cart {
 	@Autowired
 	private CartDao cartDao;
+	
+	public List<CartItem> getCart(String id){
+		return this.cartDao.selectCart(id);
+	}
+	
 	public void modifyItem(String code,Integer num,String id) {
 		for(int cnt=0; cnt<codeList.size(); cnt++) {
 			if(codeList.get(cnt).equals(code)) {
@@ -20,7 +26,7 @@ public class Cart {
 			}
 		}
 	}
-	public void deleteItem(String code) {
+	public void deleteItem(String code,String id) {
 		for(int cnt=0; cnt<codeList.size(); cnt++) {
 			if(codeList.get(cnt).equals(code)) {
 				codeList.remove(code);
@@ -31,15 +37,7 @@ public class Cart {
 			}
 		}
 	}
-	
-	private String id;
-	
-	public Cart() {
-		
-	}
-	public Cart(String id) {
-		this.id = id;
-	}
+
 	public void setCodeList(int index,String code) {
 		codeList.add(index,code);
 	}
@@ -69,7 +67,9 @@ public class Cart {
 		cartDao.updateCart(item);
 	}
 	private void insertCart(String code,int num,String id) {
-		int seqno = cartDao.selectMaxCart() + 1;
+		Integer seqno = cartDao.selectMaxCart();
+		if(seqno == null) seqno = 1;
+		else seqno = seqno + 1;
 		CartItem item = new CartItem();
 		item.setSeqno(seqno);
 		item.setCode(code); item.setNum(num);

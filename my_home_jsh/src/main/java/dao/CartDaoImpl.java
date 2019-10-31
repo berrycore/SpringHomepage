@@ -31,7 +31,7 @@ public class CartDaoImpl implements CartDao {
 	}
 
 	public List<CartItem> selectCart(String id) {
-		return session.selectList("", id);
+		return session.selectList("mapper.myMapper.selectCart",id);
 	}
 
 }

@@ -21,8 +21,10 @@
 		<c:forEach var="item" items="${ITEM_LIST }">
 			<tr>
 				<td>${item.code }</td>
-				<td><a href="../read/readItem.html?CODE=${item.code }"> ${item.name }</a></td>
-				<td><fmt:formatNumber groupingUsed="true"> ${item.price }</fmt:formatNumber></td>
+				<td><a href="../read/readItem.html?CODE=${item.code }">
+						${item.name }</a></td>
+				<td><fmt:formatNumber groupingUsed="true">
+	${item.price }</fmt:formatNumber></td>
 				<td>${item.origin }</td>
 				<td><a href="#"
 					onClick="window.open('../cart/addCart.html?CODE=${item.code}','cart','width=400,height=250').focus()">
@@ -30,10 +32,10 @@
 			</tr>
 		</c:forEach>
 	</table>
-<c:forEach var="page" begin="1" 
-					end="${COUNT}">
-<a href="../read/read.html?pageNo=${page }">${page }</a>
-</c:forEach>
+	<c:forEach var="page" begin="1" end="${COUNT}">
+		<a href="../read/read.html?pageNo=${page }">${page }</a>
+	</c:forEach>
+
 </body>
 </html>
 

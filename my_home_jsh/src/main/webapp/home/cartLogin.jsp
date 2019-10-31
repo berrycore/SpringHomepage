@@ -11,28 +11,22 @@
 </head>
 <body>
 	<c:choose>
-		<c:when test="${RESULT == 'nobody' }">
-			<h3 align="center">글을 올리려면 로그인 해야 합니다.</h3>
-		</c:when>
-		<c:when test="${ITEM == 'nobody' }">
-			<h3 align="center">상품을 올리리면 로그인 해야 합니다.</h3>
+		<c:when test="${RESULT == 'nocart' }">
+			<h3 align="center">상품을 담으려면 로그인을 해야 합니다.</h3>
 		</c:when>
 	</c:choose>
-	<form:form modelAttribute="user" method="post"
-		action="../login/frame.html">
+	<form:form modelAttribute="user" action="../cart/login.html"
+		method="post">
 아이디 : <form:input path="user_id" size="12" />
 		<font color="red"><form:errors path="user_id" /></font>
+		<br />
 패스워드 : <form:password path="password" size="12" />
 		<font color="red"><form:errors path="password" /></font>
 		<br />
 		<input type="submit" value="로그인" />
 	</form:form>
-	<div align="right">
-		<a href="../home/userentry.html"> 가입하기</a>
-	</div>
 </body>
 </html>
-
 
 
 
