@@ -4,6 +4,7 @@ import java.io.BufferedInputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -17,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import logic.WriteCatalog;
+import model.Condition;
 import model.Writing;
 
 @Controller
@@ -24,6 +26,49 @@ public class WriteController {
 
 	@Autowired
 	private WriteCatalog writeCatalog;
+	
+	@RequestMapping(value="/write/writeList.html")
+	public ModelAndView list(Integer SEQNO, Integer PAGE_NUM) {
+		if(PAGE_NUM == null)
+			PAGE_NUM = 1;
+		
+		ModelAndView mav = new ModelAndView("home/frame");
+		if(SEQNO != null) {
+			int rownum = writeCatalog.selectReplyPage(SEQNO);
+			int page = rownum / 5;
+			if(rownum % 5 != 0)
+				page++;
+			
+			PAGE_NUM = page;
+		}
+		
+		int currentPage = PAGE_NUM;
+		int totalPageCount = 0;
+		int startRow = 0;
+		int endRow = 0;
+		int count = writeCatalog.selectImageCount();
+		if( count > 0) {
+			totalPageCount = count / 5;
+			if( count % 5 > 0)
+				totalPageCount++;
+			startRow = (currentPage -1) *5 +1;
+			endRow = currentPage * 5;
+			if( endRow > count)
+				endRow = count;
+		}
+		Condition c = new Condition();
+		c.setStartRow(startRow);
+		c.setEndRow(endRow);
+		List<Writing> writeList = writeCatalog.getWriting(c);
+		mav.addObject("LIST", writeList);
+		mav.addObject("count", count);
+		mav.addObject("startRow", startRow);
+		mav.addObject("endRow", endRow);
+		mav.addObject("pageCount",  totalPageCount);
+		mav.addObject("currentPage", currentPage);
+		mav.addObject("BODY", "image_list.jsp");
+		return mav;
+	}
 	
 	@RequestMapping(value="/write/write.html")
 	public ModelAndView write(@Valid Writing writing, BindingResult br, HttpSession session,

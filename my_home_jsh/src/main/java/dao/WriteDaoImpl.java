@@ -78,4 +78,5 @@ public class WriteDaoImpl implements WriteDao {
 		session.update("mapper.myMapper.updateOrderNoReply", writing);
 	}
 
+
 }

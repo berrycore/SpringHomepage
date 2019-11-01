@@ -14,4 +14,8 @@ public interface ReadDao {
 	List<Notice> readNotice(Condition c);
 	Integer getNoticeCount();
 	Notice getNoticeDetail(Integer id);
+	
+	// image - listview
+	int selectImageCount();
+	int selectReplyPage(Integer SEQNO);
 }

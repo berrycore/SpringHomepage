@@ -19,6 +19,8 @@ public interface WriteCatalog {
 	Bbs getBbsDetail(Integer id);//게시글 목록
 	Integer selectMaxGroupId();
 	void updateOrderNoReply(Writing writing);
+	int selectImageCount();
+	int selectReplyPage(Integer SEQNO);
 }
 
 

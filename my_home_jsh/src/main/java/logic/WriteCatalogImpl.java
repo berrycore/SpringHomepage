@@ -46,6 +46,12 @@ public class WriteCatalogImpl implements WriteCatalog {
 	public void updateOrderNoReply(Writing writing) {
 		writeDao.updateOrderNoReply(writing);
 	}
+	public int selectImageCount() {
+		return readDao.selectImageCount();
+	}
+	public int selectReplyPage(Integer SEQNO) {
+		return readDao.selectReplyPage(SEQNO);
+	}
 }
 
 

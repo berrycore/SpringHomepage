@@ -16,10 +16,12 @@ public interface WriteDao {
 	Integer getMaxIdNotice();
 	void insertNotice(Notice notice);
 	
-	// image
+	// image - upload
 	Integer getMaxWritingId();
 	void insertWriting(Writing writing);
 	List<Writing> getWriting(Condition c);
 	Integer selectMaxGroupId();
 	void updateOrderNoReply(Writing writing);
+	
+
 }
