@@ -2,6 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.myMapper">
+<update id="updateOrderNoReply">
+	update writing_info set order_no = order_no+1
+	where group_id = #{group_id} and order_no >= #{order_no}
+</update>
+<select id="selectMaxGroupId" resultType="Integer">
+	select max(group_id) max_id from writing_info
+</select>
+<insert id="insertWriting">
+	insert into writing_info values(
+		#{writing_id},#{group_id},#{order_no},#{parent_id},#{register_date},
+		#{writer_name},#{email},#{image_name},#{password},#{title},#{content}
+	)
+</insert>
+<select id="getMaxWritingId" resultType="Integer">
+	select max(writing_id) from writing_info
+</select>
+<select id="getWriting" resultType="model.Writing">
+select * from
+	(select a.*, rownum rn from
+		(select * from writing_info
+		order by group_id desc, order_no asc) a
+	)
+where rn between #{startRow} and #{endRow}
+</select>
 <select id="selectCart" resultType="model.CartItem">
 	select cart.code code, cart.num num, i.price price,
 	i.name name from cart cart, user_item i

@@ -1,13 +1,16 @@
 package dao;
 
 import java.util.Calendar;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import model.Bbs;
+import model.Condition;
 import model.Notice;
+import model.Writing;
 
 @Repository
 public class WriteDaoImpl implements WriteDao {
@@ -53,6 +56,26 @@ public class WriteDaoImpl implements WriteDao {
 		
 		notice.setNotice_regist_date(writeDate);
 		session.insert("mapper.myMapper.putNotice", notice);
+	}
+
+	public Integer getMaxWritingId() {
+		return session.selectOne("mapper.myMapper.getMaxWritingId");
+	}
+
+	public void insertWriting(Writing writing) {
+		session.insert("mapper.myMapper.insertWriting", writing);
+	}
+
+	public List<Writing> getWriting(Condition c) {
+		return session.selectList("mapper.myMapper.getWriting", c);
+	}
+
+	public Integer selectMaxGroupId() {
+		return session.selectOne("mapper.myMapper.selectMaxGroupId");
+	}
+
+	public void updateOrderNoReply(Writing writing) {
+		session.update("mapper.myMapper.updateOrderNoReply", writing);
 	}
 
 }

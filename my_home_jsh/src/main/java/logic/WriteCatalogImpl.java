@@ -9,6 +9,7 @@ import dao.ReadDao;
 import dao.WriteDao;
 import model.Bbs;
 import model.Condition;
+import model.Writing;
 @Service
 public class WriteCatalogImpl implements WriteCatalog {
 	@Autowired
@@ -29,6 +30,21 @@ public class WriteCatalogImpl implements WriteCatalog {
 	}
 	public void putBbs(Bbs bbs) {
 		writeDao.insertBBS(bbs);
+	}
+	public Integer getMaxWritingId() {
+		return writeDao.getMaxWritingId();
+	}
+	public void insertWriting(Writing writing) {
+		writeDao.insertWriting(writing);		
+	}
+	public List<Writing> getWriting(Condition c) {
+		return writeDao.getWriting(c);
+	}
+	public Integer selectMaxGroupId() {
+		return writeDao.selectMaxGroupId();
+	}
+	public void updateOrderNoReply(Writing writing) {
+		writeDao.updateOrderNoReply(writing);
 	}
 }
 
