@@ -25,7 +25,7 @@
 					<th width="80">수정/삭제</th>
 				</tr>
 				<c:forEach var="cnt" items="${CART_LIST}">
-					<form action="modify-cart" method="post">
+					<form action="../cart/modify.html" method="post">
 						<input type="hidden" name="CODE" value="${cnt.code}" />
 						<tr>
 							<td>${cnt.code}</td>
@@ -37,8 +37,8 @@
 							<td><fmt:formatNumber groupingUsed="true">
 	${cnt.price * cnt.num}
 		</fmt:formatNumber></td>
-							<td><input type="submit" value="수정" name="BTN" /> <input
-								type="submit" value="삭제" name="BTN" /></td>
+							<td><input type="submit" value="수정" name="BTN" /> 
+								<input type="submit" value="삭제" name="BTN" /></td>
 						</tr>
 					</form>
 				</c:forEach>
