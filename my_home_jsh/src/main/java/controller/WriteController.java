@@ -27,6 +27,22 @@ public class WriteController {
 	@Autowired
 	private WriteCatalog writeCatalog;
 	
+	@RequestMapping(value="/write/writeReplyForm.html")
+	public ModelAndView replyForm(Integer id, Integer parent_id, Integer group_id) {
+		
+		ModelAndView mav = new ModelAndView("home/frame");
+		
+		Writing original = writeCatalog.getImageWriting(id);
+		original.setContent(null);	// 답글을 위해 지운다
+		original.setWriter_name(null);
+		original.setEmail(null);	
+		
+		mav.addObject("writing",original);
+		mav.addObject("title", "[RE]" + original.getTitle());
+		mav.addObject("BODY", "writeForm.jsp?group_id="+group_id+"&parent_id?="+parent_id);
+		return mav;
+	}
+	
 	@RequestMapping(value="/write/updateDo.html")
 	public ModelAndView modifyDo(Writing writing, HttpSession session) {
 		Writing old = writeCatalog.getImageWriting(writing.getWriting_id());

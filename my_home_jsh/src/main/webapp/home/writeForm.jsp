@@ -14,10 +14,10 @@
 	<form:form modelAttribute="writing"  action="../write/write.html" method="post" enctype="multipart/form-data">
 		<form:hidden path="order_no" value="${writing.order_no + 1 }" />
 		<c:if test="${ ! empty writing.group_id }">
-			<form:hidden path="groupid" value="${writing.group_id }" />
+			<form:hidden path="group_id" value="${writing.group_id }" />
 		</c:if>
 		<c:if test="${ ! empty writing.parent_id }">
-			<form:hidden path="parentid" value="${param.parent_id }" />
+			<form:hidden path="parent_id" value="${param.parent_id }" />
 		</c:if>
 
 		<table border="1" width="100%">

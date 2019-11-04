@@ -37,7 +37,7 @@
 </form>
 <script type="text/javascript">
 function goReply(){
-	document.move.action="writeFormServlet";
+	document.move.action="../write/writeReplyForm.html";
 	document.move.submit();
 }
 function goDelete(){
