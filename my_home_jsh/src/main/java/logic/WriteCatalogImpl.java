@@ -52,11 +52,13 @@ public class WriteCatalogImpl implements WriteCatalog {
 	public int selectReplyPage(Integer SEQNO) {
 		return readDao.selectReplyPage(SEQNO);
 	}
+	public Writing getImageWriting(Integer id) {
+		return writeDao.getImageWriting(id);
+	}
+	public void deleteImageWriting(Integer id) {
+		writeDao.deleteWriting(id);
+	}
+	public void updateImageWriting(Writing writing) {
+		writeDao.updateWriting(writing);
+	}
 }
-
-
-
-
-
-
-

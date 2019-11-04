@@ -78,7 +78,7 @@
 		}
 		function goView(id) {
 			document.move.id.value = id;
-			document.move.action = "image-read";
+			document.move.action = "../read/readImage.html";
 			document.move.submit();
 		}
 	</script>

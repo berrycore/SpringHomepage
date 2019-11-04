@@ -21,6 +21,11 @@ public interface WriteCatalog {
 	void updateOrderNoReply(Writing writing);
 	int selectImageCount();
 	int selectReplyPage(Integer SEQNO);
+	
+	Writing getImageWriting(Integer id);
+	void deleteImageWriting(Integer id);
+	
+	void updateImageWriting(Writing writing);
 }
 
 

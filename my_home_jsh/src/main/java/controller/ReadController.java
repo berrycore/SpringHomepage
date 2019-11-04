@@ -15,6 +15,7 @@ import model.Bbs;
 import model.Condition;
 import model.Item;
 import model.Notice;
+import model.Writing;
 
 @Controller
 public class ReadController {
@@ -26,6 +27,15 @@ public class ReadController {
 
 	@Autowired
 	private NoticeCatalog noticeCatalog;
+	
+	@RequestMapping(value="/read/readImage.html")
+	public ModelAndView readImage(Integer id) {
+		ModelAndView mav = new ModelAndView("home/frame");
+		Writing writing = writeCatalog.getImageWriting(id);
+		mav.addObject("writing", writing);
+		mav.addObject("BODY", "read_image.jsp");
+		return mav;
+	}
 
 	@RequestMapping(value = "/read/readItem.html")
 	public ModelAndView getItem(String CODE) {

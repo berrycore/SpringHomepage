@@ -2,6 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.myMapper">
+<update id="updateImageWriting" parameterType="model.Writing">
+	update writing_info set 
+		writer_name = #{writer_name},
+		email = #{email},
+		title = #{title},
+		content =#{content},
+		image_name = #{image_name}
+	where
+		writing_id = #{writing_id}
+</update>
+<delete id="deleteImageWriting" parameterType="Integer">
+	delete from writing_info
+	where writing_id = #{writing_id}
+</delete>
+<select id="selectImageWriting" resultType="model.Writing" parameterType="Integer">
+	select * from writing_info
+	where writing_id = #{writing_id}
+</select>
 <select id="selectImageCount" resultType="Integer">
 	select count(*) from writing_info
 </select>

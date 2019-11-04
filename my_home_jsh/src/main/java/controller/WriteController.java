@@ -27,6 +27,85 @@ public class WriteController {
 	@Autowired
 	private WriteCatalog writeCatalog;
 	
+	@RequestMapping(value="/write/updateDo.html")
+	public ModelAndView modifyDo(Writing writing, HttpSession session) {
+		Writing old = writeCatalog.getImageWriting(writing.getWriting_id());
+		ModelAndView mav = new ModelAndView("home/frame");
+
+		// 암호가 일치하는 경우
+		if( writing.getPassword().equals(old.getPassword())) {
+			MultipartFile multiFile = writing.getImage();
+			String fileName = multiFile.getOriginalFilename();
+			
+			// 이미지는 변경이 없는 경우
+			if( fileName.equals("")) {
+				writing.setImage_name(old.getImage_name());
+			}else {	//이미지가 변경되는 경우
+				String path = null;
+				OutputStream os = null;
+				ServletContext sc = session.getServletContext();
+				path = sc.getRealPath("/upload/"+fileName);
+				try {
+					os = new FileOutputStream(path);
+					BufferedInputStream bis = new BufferedInputStream(multiFile.getInputStream());
+					byte[] buffer = new byte[8106];
+					int read = 0;
+					while((read=bis.read(buffer)) > 0) {
+						os.write(buffer, 0, read);
+					}
+					if( os != null )
+						os.close();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+				writing.setImage_name(fileName);
+			}
+			writeCatalog.updateImageWriting(writing);
+			mav.addObject("BODY", "update_result_ok.jsp?id="+writing.getWriting_id());
+		}else {			// 암호가 일치하지 않는 경우
+			mav.addObject("BODY", "update_result.jsp?id="+writing.getWriting_id());
+		}
+			
+		return mav;
+	}
+	
+	@RequestMapping(value="/write/modify.html")
+	public ModelAndView modify(Integer id) {
+		ModelAndView mav = new ModelAndView("home/frame");
+		Writing writing = writeCatalog.getImageWriting(id);
+		mav.addObject(writing);
+		mav.addObject("BODY", "update_form.jsp");
+		return mav;
+	}
+	
+	@RequestMapping(value="/write/deleteDo.html")
+	public ModelAndView deleteDo(Writing writing) {
+		
+		Writing old = writeCatalog.getImageWriting(writing.getWriting_id());
+		
+		ModelAndView mav = new ModelAndView("home/frame");
+		
+		// 암호가 일치하는 경우
+		if( writing.getPassword().equals(old.getPassword())) {
+			writeCatalog.deleteImageWriting(writing.getWriting_id());
+			mav.addObject("BODY", "delete_result.jsp");
+		}else {
+			// 암호가 일치하지 않는 경우
+			mav.addObject("BODY", "delete_result.jsp?id="+writing.getWriting_id());
+		}
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/write/delete.html")
+	public ModelAndView delete(Integer id) {
+		ModelAndView mav = new ModelAndView("home/frame");
+		Writing writing = writeCatalog.getImageWriting(id);
+		mav.addObject(writing);
+		mav.addObject("BODY", "delete_form.jsp");
+		return mav;
+	}
+	
 	@RequestMapping(value="/write/writeList.html")
 	public ModelAndView list(Integer SEQNO, Integer PAGE_NUM) {
 		if(PAGE_NUM == null)
@@ -116,6 +195,7 @@ public class WriteController {
 			writing.setOrder_no(0);
 			//그룹ID 추가
 			Integer gId = writeCatalog.selectMaxGroupId();
+			if(gId == null) gId = 0;
 			writing.setGroup_id(gId + 1);
 		}else {
 			// 답글인 경우
