@@ -7,6 +7,9 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../css/menu.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../js/menu.js"></script>
 <script type="text/javascript">
 function workingClock(){
 	var days=["일","월","화","수","목","금","토"];
@@ -54,16 +57,16 @@ function startClock(){
 		</c:otherwise>
 	</c:choose>
 	</fieldset>
-<a href="../home/intro.html?BODY=intro.jsp">자기소개</a><br/>
-<a href="">공지사항 쓰기</a><br/>
-<a href="">공지사항 보기</a><br/>
-<a href="../home/bbsTemplate.html">게시글 쓰기</a><br/>
-<a href="../read/read.html">게시글 보기</a><br/>
-<a href="../product/open.html">상품정보 등록</a><br/>
-<a href="../read/product.html">상품정보 보기</a><br/>
-<a href="../cart/show.html">장바구니 보기</a><br/>
-<a href="../write/writeForm.html">이미지 게시판 작성</a><br/>
-<a href="../write/writeList.html">이미지 게시판 목록</a>
+<div class="menu"><a href="../home/intro.html?BODY=intro.jsp">자기소개</a></div>
+<div class="menu"><a href="">공지사항 쓰기</a></div>
+<div class="menu"><a href="">공지사항 보기</a></div>
+<div class="menu"><a href="../home/bbsTemplate.html">게시글 쓰기</a></div>
+<div class="menu"><a href="../read/read.html">게시글 보기</a></div>
+<div class="menu"><a href="../product/open.html">상품정보 등록</a></div>
+<div class="menu"><a href="../read/product.html">상품정보 보기</a></div>
+<div class="menu"><a href="../cart/show.html">장바구니 보기</a></div>
+<div class="menu"><a href="../write/writeForm.html">이미지 게시판 작성</a></div>
+<div class="menu"><a href="../write/writeList.html">이미지 게시판 목록</a></div>
 </td>
 	<td style="width:650px;border:1px solid blue;">
 	<c:choose>
